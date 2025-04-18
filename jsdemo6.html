@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome Page</title>
+  <style>
+    body {
+      background-color: #f3f3f3;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      color: #6f4caf;
+    }
+
+    .signup-btn {
+      background-color: #6f4caf;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .signup-form {
+      display: none;
+      margin-top: 20px;
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      margin-bottom: 5px;
+      text-align: left;
+      color: #555;
+      font-weight: bold;
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 15px;
+      border-radius: 10px;
+      margin-top: 15px;
+      margin-bottom: 15px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      background-color: #6f4caf;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #d4edda;
+      color: #155724;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Welcome to the Home Page!</h1>
+    <p>You have successfully logged in 🎉</p>
+
+    <!-- Sign-Up Button -->
+    <button class="signup-btn" onclick="toggleSignUpForm()">Sign Up</button>
+
+    <!-- Sign-Up Form -->
+    <div class="signup-form" id="signup-form">
+      <h2>Sign Up for an Account</h2>
+      <form id="signup-form-element" onsubmit="submitForm(event)">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter your Username" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your Email" required>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Create a Password" required>
+
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="success-message">
+      <h3>Thank you for signing up! 🎉</h3>
+      <p>Your account has been successfully created.</p>
+    </div>
+  </div>
+
+  <script>
+    // Function to toggle the visibility of the Sign-Up form
+    function toggleSignUpForm() {
+      var form = document.getElementById('signup-form');
+      form.style.display = (form.style.display === 'none' || form.style.display === '') ? 'block' : 'none';
+    }
+
+    // Handle the form submission
+    function submitForm(event) {
+      event.preventDefault(); // Prevent page reload
+
+      // Get the form data
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Store data in localStorage (simulating backend storage)
+      localStorage.setItem('username', username);
+      localStorage.setItem('email', email);
+      localStorage.setItem('password', password);
+
+      // Hide the form and show the success message
+      document.getElementById('signup-form').style.display = 'none';
+      document.getElementById('success-message').style.display = 'block';
+
+      // Optional: Reset form inputs
+      document.getElementById('signup-form-element').reset();
+    }
+  </script>
+
+</body>
+</html>
